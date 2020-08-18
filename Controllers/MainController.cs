@@ -20,7 +20,7 @@ namespace mintsoft_order_app.Controllers
 
         [HttpPost]
         [Route("order")]
-        public void Order([FromForm] UserDetails request) => orderService.Order(request);
+        public bool Order([FromForm] UserDetails request) => orderService.Order(request);
 
         [HttpGet]
         [Route("countries")] 

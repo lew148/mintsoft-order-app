@@ -11,7 +11,7 @@ const CountrySelect = () => {
             setCountries(response);
         };
         getCountries();
-    });
+    }, []);
 
     return (
         <Select

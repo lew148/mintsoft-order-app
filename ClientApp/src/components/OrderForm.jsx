@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-form';
 import $ from 'jquery';
 import { TextField, Select } from './InputTypes';
@@ -6,17 +6,23 @@ import CountrySelect from './CountrySelect';
 
 const titleSelectOptions = ['MR', 'MRS', 'MISS', 'MS', 'DOCTOR'];
 
-const handleSubmit = async (values) => {
-    console.log(values);
-    await $.post('https://localhost:44329/api/order', values);
-};
-
 const OrderForm = () => {
+    const [success, setSuccess] = useState(null);
+
+    const handleSubmit = async (values) => {
+        const response = await $.post('https://localhost:44329/api/order', values);
+        setSuccess(response);
+    };
+
     const { Form } = useForm({
         onSubmit: async (values) => {
             handleSubmit(values);
         },
     });
+
+    const renderMessage = () => success
+        ? <div className="alert alert-success" role="alert">Order Successful!</div>
+        : <div className="alert alert-danger" role="alert">Order Failed! Please try again</div>;
 
     return (
         <div className="card m-3">
@@ -26,6 +32,7 @@ const OrderForm = () => {
                         <h3>Product Order Form</h3>
                         <p className="text-muted">Please input your details for the order.</p>
                         <hr />
+                        {success !== null ? renderMessage() : undefined}
                         <div>
                             <div className="form-row">
                                 <Select
