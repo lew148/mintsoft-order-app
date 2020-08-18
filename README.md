@@ -6,4 +6,5 @@ You will need to provide an API Key in api-key.txt
 This can be obtained from the [MintSoft API](https://support.mintsoft.co.uk/hc/en-us/articles/360027638872-API-Authentication)
 
 ### To run
-Clone repo and run `dotnet run` in directory root
+Clone repo, open in Rider / Visual Studio and run project (IIS hosting).  
+These apps should auto-setup config.
