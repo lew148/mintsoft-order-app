@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using mintsoft_order_app.Services;
 
 namespace mintsoft_order_app
 {
@@ -20,8 +21,11 @@ namespace mintsoft_order_app
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllersWithViews();
+
+            // Dependency Injection
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ICountryService, CountryService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
