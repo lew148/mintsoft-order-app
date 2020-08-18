@@ -1,0 +1,9 @@
+.form-row {
+    padding: 0.5rem 0 !important;
+    text-align: center;
+}
+
+.card-container {
+    align-items: center;
+    justify-content: space-around;
+}
